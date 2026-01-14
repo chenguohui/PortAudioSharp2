@@ -32,6 +32,8 @@ def process_linux(s, arch):
     d["dotnet_rid2"] = f"linux-{arch}"
     if arch == "arm64":
         d["dotnet_rid2"] = f"linux-aarch64"
+    elif arch == "loongarch64":
+        d["dotnet_rid2"] = f"linux-loongarch64"
     d["libs"] = libs
 
     environment = jinja2.Environment()
@@ -93,6 +95,7 @@ def main():
 
     process_linux(s, "x64")
     process_linux(s, "arm64")
+    process_linux(s, "loongarch64")
 
     process_windows(s, "x64")
     process_ios(s)
